@@ -4,8 +4,8 @@
     <h1>自制组件库</h1>
     <h2>一个常用的 UI 组件库</h2>
     <p class="actions">
-      <a href="">GitHub</a>
-      <a href="">开始</a>
+      <a href="https://github.com/wonggamto/ui-library">GitHub</a>
+      <router-link to="/doc">开始</router-link>
     </p>
   </div>
 </template>
