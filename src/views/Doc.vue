@@ -29,7 +29,8 @@ export default {
   name: 'Doc',
   components: {TopNav},
   setup(){
-    const asideVisible = inject<Ref<boolean>>('xxx');
+    const asideVisible = inject<Ref<boolean>>('asideVisible');
+    console.log('doc',asideVisible);
     return {asideVisible}
   }
 };

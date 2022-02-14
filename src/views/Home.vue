@@ -12,6 +12,7 @@
 
 <script lang='ts'>
 import TopNav from '../components/TopNav.vue';
+
 export default {
   name: 'Home',
   components: {TopNav}
@@ -19,6 +20,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@use "sass:math";
 .banner {
   padding: 100px 0;
   display: flex;
@@ -26,16 +28,22 @@ export default {
   align-items: center;
   flex-direction: column;
   background: lightgreen;
-  > .actions{
+
+  > .actions {
     padding: 8px 0;
+
     a {
-      margin:0 8px;
+      margin: 0 8px;
       background: #fff;
       display: inline-block;
       $h: 28px;
+      //$border-radius:
       height: $h;
       line-height: $h;
-      border-radius: $h/2;
+      //TODO
+      border-radius: 14px;
+      //border-radius:($h / 2);
+      //@debug calc($h / 2);
       padding: 0 8px;
     }
   }

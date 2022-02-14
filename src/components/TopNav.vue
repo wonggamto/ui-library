@@ -9,16 +9,17 @@
 </template>
 
 <script lang='ts'>
-import {inject,Ref} from 'vue';
+import {inject, Ref} from 'vue';
 
 export default {
   name: 'TopNav',
   setup() {
-    const asideVisible = inject<Ref<boolean>>('xxx');
-    const toggleAside = ()=>{
-      asideVisible.value = !asideVisible.value
-    }
-    return {toggleAside}
+    const asideVisible = inject<Ref<boolean>>('asideVisible');
+    const toggleAside = () => {
+      asideVisible.value = !asideVisible.value;
+      console.log('topNav', asideVisible.value);
+    };
+    return {toggleAside};
   }
 };
 </script>
@@ -29,7 +30,9 @@ export default {
   display: flex;
   padding: 16px;
   position: relative;
-  z-index: 10;
+  z-index: 19;
+  justify-content: center;
+  align-items: center;
 
   > .logo {
     max-width: 6em;
@@ -44,6 +47,15 @@ export default {
     > li {
       margin: 0 1em;
     }
+  }
+}
+
+@media (max-width: 500px) {
+  > .menu {
+    display: none;
+  }
+  .logo {
+    margin: 0 auto
   }
 }
 
