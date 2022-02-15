@@ -1,5 +1,6 @@
 <template>
-  <button :class="{checked}" @click="onToggle"><span></span></button>
+  <button :class="{checked:value}" @click="onToggle"><span></span></button>
+  <div>{{ value }}</div>
 </template>
 
 <script lang='ts'>
@@ -7,12 +8,15 @@ import {ref} from 'vue';
 
 export default {
   name: 'Switch',
-  setup(){
-    const checked = ref(false)
-    const onToggle = ()=>{
-      checked.value = !checked.value
-    }
-    return {checked,onToggle}
+  props: {
+    value: Boolean,
+  },
+  setup(props, context) {
+    const onToggle = () => {
+      // 把props的value 取反，通过 input 事件告诉外部
+      context.emit('input',!props.value);
+    };
+    return {onToggle};
   }
 };
 </script>
@@ -41,13 +45,16 @@ span {
   border-radius: $h2 / 2;
   transition: left 250ms;
 }
-button:focus{
+
+button:focus {
   outline: none;
 }
+
 button.checked {
   background: blue;
 }
-button.checked >span {
+
+button.checked > span {
   left: calc(100% - #{$h2} - 2px);
 }
 </style>
