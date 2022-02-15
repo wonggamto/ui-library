@@ -4,6 +4,7 @@
 
 <script lang="ts">
 import {provide, ref} from 'vue';
+import {router} from './router/router';
 
 export default {
   name: 'App',
@@ -11,6 +12,11 @@ export default {
     const screenWidth = document.documentElement.clientWidth;
     const asideVisible = ref(screenWidth <= 500 ? false : true);
     provide('asideVisible', asideVisible);
+    router.afterEach(() => {
+      if (screenWidth <= 500) {
+        asideVisible.value = false;
+      }
+    });
   },
   components: {}
 };
